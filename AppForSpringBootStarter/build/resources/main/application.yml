@@ -1,0 +1,37 @@
+spring:
+  jpa:
+    generate-ddl: true
+  application:
+    name: homework
+  datasource:
+    url: jdbc:postgresql://localhost:5432/T1Open1th
+    username: postgres
+    password: admin
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      schema: public
+      connection-init-sql: CREATE SCHEMA IF NOT EXISTS public
+      connection-timeout: 10000
+
+api-logging:
+  http:
+    level: INFO
+    format: TEXT
+
+
+logging:
+  level:
+    org:
+      springframework:
+        web: DEBUG
+        security: DEBUG
+    example:
+      aop:
+        aspect:
+          LoggingAspect: DEBUG
+    hibernate:
+      SQL: DEBUG
+      type:
+        descriptor:
+          sql:
+            BasicBinder: TRACE

@@ -15,14 +15,27 @@
 - Поддержка форматов вывода логов (json или text)
 - Возможность изменения уровня логирования (DEBUG, INFO, WARNING, ERROR)
 
-## Установка
+## Сборка и запуск
 
-### 1. Добавьте зависимость в `build.gradle` вашего Spring Boot проекта:
+### 1. Для начала клонируйте репозиторий с GitHub:
 
-```xml
-implementation ("org.example:logging-http-spring-boot-starter:0.0.1-SNAPSHOT")
+```bash
+git clone https://github.com/Takeasoul/Spring-Boot-Starter-T1.git
 ```
-### 2. Пропишите необходимые конфигурации в application.yml или application.properties.
+
+### 2. Перейдите в корневую директорию проекта и выполните команду:
+
+```bash
+mvn clean install
+```
+
+### 3. После успешной сборки, перейдите в папку AppForSpringBootStarter:
+
+```bash
+cd AppForSpringBootStarter
+```
+
+### 4. Пропишите необходимые конфигурации в application.yml или application.properties.
 #### Пример конфигурации в application.yml:
 
 ```yml
@@ -37,6 +50,14 @@ api-logging:
 api-logging.http.level=DEBUG
 api-logging.http.format=json
 ```
+
+### 4. Запустите приложение с использованием Gradle:
+
+```bash
+./gradlew bootRun
+```
+
+
 ## Использование
 После добавления зависимости и настройки конфигурации, стартер автоматически начнет логировать все HTTP-запросы и ответы. В логах будут отображаться следующие данные:
 
@@ -47,7 +68,7 @@ api-logging.http.format=json
 - Код ответа
 - Заголовки ответа
 - Время обработки запроса
-- 
+
 #### Пример логов в JSON формате:
 
 ```json
