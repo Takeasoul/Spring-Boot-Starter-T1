@@ -1,0 +1,4 @@
+org\example\logginghttpspringbootstarter\config\LoggingAutoConfiguration.class
+org\example\logginghttpspringbootstarter\config\LoggingProperties.class
+org\example\logginghttpspringbootstarter\filter\LoggingFilter.class
+org\example\logginghttpspringbootstarter\LoggingHttpSpringBootStarterApplication.class
