@@ -15,8 +15,8 @@ spring:
 
 api-logging:
   http:
-    level: INFO
-    format: TEXT
+    level: DEBUG
+    format: JSON
 
 
 logging:
