@@ -43,22 +43,20 @@ public class LoggingFilter extends GenericFilterBean {
     }
 
     private void logRequest(HttpServletRequest request) {
-        if (shouldLog(loggingProperties.getLevel())) {
-            Map<String, Object> logData = new HashMap<>();
-            logData.put("method", request.getMethod());
-            logData.put("uri", request.getRequestURI());
-
-            Map<String, String> headers = new HashMap<>();
-            Enumeration<String> headerNames = request.getHeaderNames();
-            while (headerNames.hasMoreElements()) {
-                String headerName = headerNames.nextElement();
-                headers.put(headerName, request.getHeader(headerName));
-            }
-            logData.put("headers", headers);
-            logData.put("params", request.getParameterMap());
-
-            log(logData, "Incoming Request");
+        if (!shouldLog(loggingProperties.getRequestLogLevel())) {
+            return;
         }
+        Map<String, Object> logData = new HashMap<>();
+        logData.put("method", request.getMethod());
+        logData.put("uri", request.getRequestURI());
+
+        logData.put("headers", Collections.list(request.getHeaderNames())
+                .stream()
+                .collect(Collectors.toMap(h -> h, request::getHeader)));
+
+        logData.put("params", request.getParameterMap());
+
+        log(logData, "Incoming Request");
     }
 
     private void logResponse(HttpServletResponse response, long duration) {
